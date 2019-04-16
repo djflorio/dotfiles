@@ -19,6 +19,8 @@ let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.php'
 " NERDTree Options
 " ensure you can quit vim if NERDTree is the only window open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" CtrlP Options
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git' " ignore files and directories from fuzzy search
 
 syntax on " turn on syntax highlighting
 colorscheme monokai
