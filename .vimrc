@@ -15,7 +15,15 @@ call vundle#end()
 filetype plugin indent on
 " /VUNDLE STUFF
 
-let darkmode=1
+let DARK_MODE = 1
+let THEME = 'cosmic_latte'
+let AIRLINE_THEME = DARK_MODE ? 'cosmic_latte_dark' : 'cosmic_latte_light'
+
+let HAS_GUI_COLORS = 1
+if !(has('termguicolors') && &termguicolors) && !has('gui_running')
+    \ && (!exists('&t_Co') || &t_Co < 256)
+	let HAS_GUI_COLORS = 0
+endif
 
 " CloseTag Options
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.php'
@@ -24,20 +32,18 @@ let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.php'
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " CtrlP Options
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git' " ignore files and directories from fuzzy search
-" Airline
-if darkmode
-	let g:airline_theme='cosmic_latte_light'
-else
-	let g:airline_theme='cosmic_latte_light'
+
+if HAS_GUI_COLORS
+	let g:airline_theme=AIRLINE_THEME
+	execute "colorscheme ".THEME
 endif
 
 syntax on " turn on syntax highlighting
-if darkmode
+
+if DARK_MODE
 	set background=dark
-	colorscheme cosmic_latte
 else
 	set background=light
-	colorscheme cosmic_latte
 endif
 set number relativenumber " turn on line numbers
 set bs=2 " allow backspace to delete line
