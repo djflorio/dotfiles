@@ -10,9 +10,12 @@ Plugin 'pangloss/vim-javascript' " JSX syntax highligher
 Plugin 'mxw/vim-jsx' " JSX indenting
 Plugin 'ctrlpvim/ctrlp.vim' " fuzzy finder
 Plugin 'vim-airline/vim-airline' " the info bar at the bottom
+Plugin 'nightsense/cosmic_latte'
 call vundle#end()
 filetype plugin indent on
 " /VUNDLE STUFF
+
+let darkmode=1
 
 " CloseTag Options
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.php'
@@ -21,13 +24,28 @@ let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.php'
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " CtrlP Options
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git' " ignore files and directories from fuzzy search
+" Airline
+if darkmode
+	let g:airline_theme='cosmic_latte_light'
+else
+	let g:airline_theme='cosmic_latte_light'
+endif
 
 syntax on " turn on syntax highlighting
-colorscheme monokai
+if darkmode
+	set background=dark
+	colorscheme cosmic_latte
+else
+	set background=light
+	colorscheme cosmic_latte
+endif
 set number relativenumber " turn on line numbers
 set bs=2 " allow backspace to delete line
 set cul " highlight current line
 set colorcolumn=80 " show 80 character line
+set hlsearch " highlight search results
+set ignorecase " all searches case insensitive
+set smartcase " searche are case sensitive if cap letter used
 
 autocmd FileType html setlocal shiftwidth=2 tabstop=2
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
