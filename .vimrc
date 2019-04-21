@@ -32,6 +32,7 @@ let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.php'
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 " CtrlP Options
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git' " ignore files and directories from fuzzy search
+let g:ctrlp_show_hidden = 1 " show hidden files
 
 if HAS_GUI_COLORS
 	let g:airline_theme=AIRLINE_THEME
