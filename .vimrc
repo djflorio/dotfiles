@@ -15,7 +15,11 @@ call vundle#end()
 filetype plugin indent on
 " /VUNDLE STUFF
 
-let DARK_MODE = 1
+if strftime('%H') >= 7 && strftime('%H') < 19
+  let DARK_MODE = 0
+else
+  let DARK_MODE = 1
+endif
 let THEME = 'cosmic_latte'
 let AIRLINE_THEME = DARK_MODE ? 'cosmic_latte_dark' : 'cosmic_latte_light'
 
