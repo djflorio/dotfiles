@@ -10,7 +10,8 @@ Plugin 'pangloss/vim-javascript' " JSX syntax highligher
 Plugin 'mxw/vim-jsx' " JSX indenting
 Plugin 'ctrlpvim/ctrlp.vim' " fuzzy finder
 Plugin 'vim-airline/vim-airline' " the info bar at the bottom
-Plugin 'nightsense/cosmic_latte'
+Plugin 'mileszs/ack.vim' " powerful search tool
+Plugin 'nightsense/cosmic_latte' " theme
 call vundle#end()
 filetype plugin indent on
 " /VUNDLE STUFF
