@@ -16,19 +16,20 @@ call vundle#end()
 filetype plugin indent on
 " /VUNDLE STUFF
 
+set term=screen-256color " required for tmux to properly display vim colors
+
 if strftime('%H') >= 7 && strftime('%H') < 19
   let DARK_MODE = 0
+  set background=light
 else
   let DARK_MODE = 1
+  set background=dark
 endif
-let THEME = 'cosmic_latte'
+
 let AIRLINE_THEME = DARK_MODE ? 'cosmic_latte_dark' : 'cosmic_latte_light'
 
-let HAS_GUI_COLORS = 1
-if !(has('termguicolors') && &termguicolors) && !has('gui_running')
-    \ && (!exists('&t_Co') || &t_Co < 256)
-	let HAS_GUI_COLORS = 0
-endif
+let g:airline_theme=AIRLINE_THEME
+colorscheme cosmic_latte
 
 " CloseTag Options
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.php'
@@ -39,18 +40,8 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git' " ignore files and directories from fuzzy search
 let g:ctrlp_show_hidden = 1 " show hidden files
 
-if HAS_GUI_COLORS
-	let g:airline_theme=AIRLINE_THEME
-	execute "colorscheme ".THEME
-endif
-
 syntax on " turn on syntax highlighting
 
-if DARK_MODE
-	set background=dark
-else
-	set background=light
-endif
 set number relativenumber " turn on line numbers
 set bs=2 " allow backspace to delete line
 set cul " highlight current line
