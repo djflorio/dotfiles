@@ -66,3 +66,4 @@ autocmd FileType python setlocal shiftwidth=4 tabstop=4
 autocmd FileType php setlocal shiftwidth=4 tabstop=4
 autocmd FileType css setlocal shiftwidth=2 tabstop=2
 autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
+autocmd FileType text setlocal shiftwidth=2 tabstop=2
