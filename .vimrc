@@ -12,27 +12,37 @@ Plugin 'ctrlpvim/ctrlp.vim' " fuzzy finder
 Plugin 'vim-airline/vim-airline' " the info bar at the bottom
 Plugin 'mileszs/ack.vim' " powerful search tool
 Plugin 'nightsense/cosmic_latte' " theme
+Plugin 'flazz/vim-colorschemes' " a bunch of themes
+Plugin 'jiangmiao/auto-pairs' " auto pair brackets and what not
+Plugin 'ervandew/supertab' " tab autocompletion
 call vundle#end()
 filetype plugin indent on
 " /VUNDLE STUFF
 
 set term=screen-256color " required for tmux to properly display vim colors
 
-if strftime('%H') >= 7 && strftime('%H') < 19
-  let DARK_MODE = 0
-  set background=light
+"if strftime('%H') >= 7 && strftime('%H') < 19
+"  let DARK_MODE = 0
+"  set background=light
+"else
+" let DARK_MODE = 1
+" set background=dark
+"endif
+
+let DARK_MODE = 1
+if DARK_MODE
+    set background=dark
 else
-  let DARK_MODE = 1
-  set background=dark
+    set background=light
 endif
 
-let AIRLINE_THEME = DARK_MODE ? 'cosmic_latte_dark' : 'cosmic_latte_light'
+"let AIRLINE_THEME = DARK_MODE ? 'cosmic_latte_dark' : 'cosmic_latte_light'
 
-let g:airline_theme=AIRLINE_THEME
-colorscheme cosmic_latte
+"let g:airline_theme=AIRLINE_THEME
+colorscheme monokai
 
 " CloseTag Options
-let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.php'
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.php,*.js,*.jsx'
 " NERDTree Options
 " ensure you can quit vim if NERDTree is the only window open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
