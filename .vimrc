@@ -7,51 +7,33 @@ Plugin 'VundleVim/Vundle.vim' " required for Vundle to work
 Plugin 'scrooloose/nerdtree' " file browsing
 Plugin 'alvan/vim-closetag' " HTML closing tags
 Plugin 'pangloss/vim-javascript' " JSX syntax highligher
+Plugin 'leafgarland/typescript-vim' " typescript syntax and other stuff
 Plugin 'mxw/vim-jsx' " JSX indenting
 Plugin 'ctrlpvim/ctrlp.vim' " fuzzy finder
-Plugin 'vim-airline/vim-airline' " the info bar at the bottom
+Plugin 'vim-airline/vim-airline' " info bar at the bottom of each buffer
 Plugin 'mileszs/ack.vim' " powerful search tool
-Plugin 'nightsense/cosmic_latte' " theme
-Plugin 'flazz/vim-colorschemes' " a bunch of themes
 Plugin 'jiangmiao/auto-pairs' " auto pair brackets and what not
 Plugin 'ervandew/supertab' " tab autocompletion
+Plugin 'tbastos/vim-lua' " lua stuff
+Plugin 'lifepillar/vim-wwdc16-theme' " color theme
 call vundle#end()
 filetype plugin indent on
-" /VUNDLE STUFF
-
-set term=screen-256color " required for tmux to properly display vim colors
-
-"if strftime('%H') >= 7 && strftime('%H') < 19
-"  let DARK_MODE = 0
-"  set background=light
-"else
-" let DARK_MODE = 1
-" set background=dark
-"endif
-
-let DARK_MODE = 1
-if DARK_MODE
-    set background=dark
-else
-    set background=light
-endif
-
-"let AIRLINE_THEME = DARK_MODE ? 'cosmic_latte_dark' : 'cosmic_latte_light'
-
-"let g:airline_theme=AIRLINE_THEME
-colorscheme monokai
+" END VUNDLE STUFF
 
 " CloseTag Options
-let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.php,*.js,*.jsx'
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.php,*.js,*.jsx,*.tsx'
+
 " NERDTree Options
 " ensure you can quit vim if NERDTree is the only window open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
 " CtrlP Options
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git' " ignore files and directories from fuzzy search
 let g:ctrlp_show_hidden = 1 " show hidden files
 
-syntax on " turn on syntax highlighting
-
+" General VIM Options
+set termguicolors
+set background=dark
 set number relativenumber " turn on line numbers
 set bs=2 " allow backspace to delete line
 set cul " highlight current line
@@ -60,10 +42,17 @@ set hlsearch " highlight search results
 set ignorecase " all searches case insensitive
 set smartcase " searche are case sensitive if cap letter used
 
+syntax on " turn on syntax highlighting
+colorscheme wwdc16 
+
 autocmd FileType html setlocal shiftwidth=2 tabstop=2
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
+autocmd FileType typescript setlocal shiftwidth=2 tabstop=2
 autocmd FileType python setlocal shiftwidth=4 tabstop=4
+autocmd FileType lua setlocal shiftwidth=4 tabstop=4
 autocmd FileType php setlocal shiftwidth=4 tabstop=4
+autocmd FileType json setlocal shiftwidth=4 tabstop=4
 autocmd FileType css setlocal shiftwidth=2 tabstop=2
 autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
 autocmd FileType text setlocal shiftwidth=2 tabstop=2
+autocmd FileType sql setlocal shiftwidth=2 tabstop=2
