@@ -16,6 +16,8 @@ Plugin 'jiangmiao/auto-pairs' " auto pair brackets and what not
 Plugin 'ervandew/supertab' " tab autocompletion
 Plugin 'tbastos/vim-lua' " lua stuff
 Plugin 'lifepillar/vim-wwdc16-theme' " color theme
+Plugin 'prettier/vim-prettier' " prettier
+Plugin 'styled-components/vim-styled-components' " styled syntax highlighter
 call vundle#end()
 filetype plugin indent on
 " END VUNDLE STUFF
@@ -26,6 +28,7 @@ let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.php,*.js,*.jsx,*.tsx'
 " NERDTree Options
 " ensure you can quit vim if NERDTree is the only window open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" let NERDTreeShowHidden=1
 
 " CtrlP Options
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git' " ignore files and directories from fuzzy search
