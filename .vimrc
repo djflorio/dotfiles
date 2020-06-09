@@ -11,13 +11,18 @@ Plugin 'leafgarland/typescript-vim' " typescript syntax and other stuff
 Plugin 'mxw/vim-jsx' " JSX indenting
 Plugin 'ctrlpvim/ctrlp.vim' " fuzzy finder
 Plugin 'vim-airline/vim-airline' " info bar at the bottom of each buffer
+Plugin 'vim-airline/vim-airline-themes' " themes for vim airline
 Plugin 'mileszs/ack.vim' " powerful search tool
 Plugin 'jiangmiao/auto-pairs' " auto pair brackets and what not
 Plugin 'ervandew/supertab' " tab autocompletion
 Plugin 'tbastos/vim-lua' " lua stuff
 Plugin 'lifepillar/vim-wwdc16-theme' " color theme
+Plugin 'victorze/foo' " color theme
+Plugin 'franbach/miramare' " color theme
 Plugin 'prettier/vim-prettier' " prettier
 Plugin 'styled-components/vim-styled-components' " styled syntax highlighter
+Plugin 'jparise/vim-graphql' " graphql stuff
+Plugin 'dart-lang/dart-vim-plugin' " dart stuff
 call vundle#end()
 filetype plugin indent on
 " END VUNDLE STUFF
@@ -43,19 +48,27 @@ set cul " highlight current line
 set colorcolumn=80 " show 80 character line
 set hlsearch " highlight search results
 set ignorecase " all searches case insensitive
-set smartcase " searche are case sensitive if cap letter used
+set smartcase " searches are case sensitive if cap letter used
 
 syntax on " turn on syntax highlighting
-colorscheme wwdc16 
+set background=dark
+"colorscheme wwdc16 
+"colorscheme github
+colorscheme miramare
+hi Comment cterm=bold
+hi Search guifg=black guibg=yellow
+"let g:airline_theme='molokai'
+let g:airline#extensions#branch#enabled = 1
 
 autocmd FileType html setlocal shiftwidth=2 tabstop=2
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
 autocmd FileType typescript setlocal shiftwidth=2 tabstop=2
 autocmd FileType python setlocal shiftwidth=4 tabstop=4
 autocmd FileType lua setlocal shiftwidth=4 tabstop=4
-autocmd FileType php setlocal shiftwidth=4 tabstop=4
+autocmd FileType php setlocal shiftwidth=2 tabstop=2
 autocmd FileType json setlocal shiftwidth=4 tabstop=4
 autocmd FileType css setlocal shiftwidth=2 tabstop=2
 autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
 autocmd FileType text setlocal shiftwidth=2 tabstop=2
 autocmd FileType sql setlocal shiftwidth=2 tabstop=2
+autocmd FileType dart setlocal shiftwidth=2 tabstop=2
