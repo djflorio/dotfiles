@@ -7,6 +7,7 @@ Plugin 'VundleVim/Vundle.vim' " required for Vundle to work
 Plugin 'scrooloose/nerdtree' " file browsing
 Plugin 'alvan/vim-closetag' " HTML closing tags
 Plugin 'pangloss/vim-javascript' " JSX syntax highligher
+Plugin 'peitalin/vim-jsx-typescript'
 Plugin 'leafgarland/typescript-vim' " typescript syntax and other stuff
 Plugin 'mxw/vim-jsx' " JSX indenting
 Plugin 'ctrlpvim/ctrlp.vim' " fuzzy finder
@@ -27,12 +28,19 @@ call vundle#end()
 filetype plugin indent on
 " END VUNDLE STUFF
 
+filetype off
+set rtp+=/home/dflo/bin/lilypond/current/vim/ " include lilypond stuff
+filetype on
+syntax on
+let mapleader = ","
+
 " CloseTag Options
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.php,*.js,*.jsx,*.tsx'
 
 " NERDTree Options
 " ensure you can quit vim if NERDTree is the only window open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+nmap <leader>ne :NERDTree<cr>
 " let NERDTreeShowHidden=1
 
 " CtrlP Options
@@ -72,3 +80,5 @@ autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
 autocmd FileType text setlocal shiftwidth=2 tabstop=2
 autocmd FileType sql setlocal shiftwidth=2 tabstop=2
 autocmd FileType dart setlocal shiftwidth=2 tabstop=2
+autocmd FileType c setlocal shiftwidth=2 tabstop=2
+autocmd FileType C setlocal shiftwidth=2 tabstop=2
