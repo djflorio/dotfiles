@@ -1,38 +1,21 @@
-" VUNDLE STUFF
-set nocompatible
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim " include Vundle in runtime path
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim' " required for Vundle to work
-Plugin 'scrooloose/nerdtree' " file browsing
-Plugin 'alvan/vim-closetag' " HTML closing tags
-Plugin 'pangloss/vim-javascript' " JSX syntax highligher
-Plugin 'peitalin/vim-jsx-typescript'
-Plugin 'leafgarland/typescript-vim' " typescript syntax and other stuff
-Plugin 'mxw/vim-jsx' " JSX indenting
-Plugin 'ctrlpvim/ctrlp.vim' " fuzzy finder
-Plugin 'vim-airline/vim-airline' " info bar at the bottom of each buffer
-Plugin 'vim-airline/vim-airline-themes' " themes for vim airline
-Plugin 'mileszs/ack.vim' " powerful search tool
-Plugin 'jiangmiao/auto-pairs' " auto pair brackets and what not
-Plugin 'ervandew/supertab' " tab autocompletion
-Plugin 'tbastos/vim-lua' " lua stuff
-Plugin 'lifepillar/vim-wwdc16-theme' " color theme
-Plugin 'victorze/foo' " color theme
-Plugin 'franbach/miramare' " color theme
-Plugin 'prettier/vim-prettier' " prettier
-Plugin 'styled-components/vim-styled-components' " styled syntax highlighter
-Plugin 'jparise/vim-graphql' " graphql stuff
-Plugin 'dart-lang/dart-vim-plugin' " dart stuff
-call vundle#end()
-filetype plugin indent on
-" END VUNDLE STUFF
+" Vim-Plug stuff. Use :PlugInstall to install
+call plug#begin()
+Plug 'preservim/NERDTree' " file browser
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " fzf main repo
+Plug 'junegunn/fzf.vim' " fzf vim-specific repo; includes silver-serfer (Ag)
+Plug 'alvan/vim-closetag' " auto tag close for html
+Plug 'jiangmiao/auto-pairs' " auto bracket/quote close
+Plug 'vim-airline/vim-airline' " bottom bar
+Plug 'vim-airline/vim-airline-themes' " themes for bottom bar
+Plug 'franbach/miramare' " color scheme
+Plug 'ycm-core/YouCompleteMe' " auto code completion. See repo for full install instructions
+Plug 'prettier/vim-prettier', { 
+  \ 'do': 'yarn install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+cal plug#end()
 
-filetype off
-set rtp+=/home/dflo/bin/lilypond/current/vim/ " include lilypond stuff
-filetype on
-syntax on
 let mapleader = ","
+nmap <C-P> :FZF<CR>
 
 " CloseTag Options
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.php,*.js,*.jsx,*.tsx'
@@ -41,11 +24,7 @@ let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.php,*.js,*.jsx,*.tsx'
 " ensure you can quit vim if NERDTree is the only window open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 nmap <leader>ne :NERDTree<cr>
-" let NERDTreeShowHidden=1
-
-" CtrlP Options
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git' " ignore files and directories from fuzzy search
-let g:ctrlp_show_hidden = 1 " show hidden files
+let NERDTreeShowHidden=1
 
 " General VIM Options
 set termguicolors
@@ -57,16 +36,17 @@ set colorcolumn=80 " show 80 character line
 set hlsearch " highlight search results
 set ignorecase " all searches case insensitive
 set smartcase " searches are case sensitive if cap letter used
+set autoindent
+set smartindent
 
 syntax on " turn on syntax highlighting
 set background=dark
-"colorscheme wwdc16 
-"colorscheme github
 colorscheme miramare
-hi Comment cterm=bold
-hi Search guifg=black guibg=yellow
+"hi Comment cterm=bold
+"hi Search guifg=black guibg=yellow
 "let g:airline_theme='molokai'
 let g:airline#extensions#branch#enabled = 1
+let g:airline_theme='minimalist'
 
 autocmd FileType html setlocal shiftwidth=2 tabstop=2
 autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
