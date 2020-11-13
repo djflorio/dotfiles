@@ -8,7 +8,9 @@ Plug 'jiangmiao/auto-pairs' " auto bracket/quote close
 Plug 'vim-airline/vim-airline' " bottom bar
 Plug 'vim-airline/vim-airline-themes' " themes for bottom bar
 Plug 'franbach/miramare' " color scheme
+Plug 'arzg/vim-colors-xcode' " color scheme
 Plug 'ycm-core/YouCompleteMe' " auto code completion. See repo for full install instructions
+Plug 'jparise/vim-graphql' " graphql syntax highliter
 Plug 'prettier/vim-prettier', { 
   \ 'do': 'yarn install',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
@@ -41,7 +43,7 @@ set smartindent
 
 syntax on " turn on syntax highlighting
 set background=dark
-colorscheme miramare
+colorscheme xcodedark " also try xcodewwdc
 "hi Comment cterm=bold
 "hi Search guifg=black guibg=yellow
 "let g:airline_theme='molokai'
@@ -54,7 +56,7 @@ autocmd FileType typescript setlocal shiftwidth=2 tabstop=2
 autocmd FileType python setlocal shiftwidth=4 tabstop=4
 autocmd FileType lua setlocal shiftwidth=4 tabstop=4
 autocmd FileType php setlocal shiftwidth=2 tabstop=2
-autocmd FileType json setlocal shiftwidth=4 tabstop=4
+autocmd FileType json setlocal shiftwidth=2 tabstop=2
 autocmd FileType css setlocal shiftwidth=2 tabstop=2
 autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
 autocmd FileType text setlocal shiftwidth=2 tabstop=2
