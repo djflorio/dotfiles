@@ -19,11 +19,12 @@ Plug 'prettier/vim-prettier', {
 cal plug#end()
 
 let mapleader = ","
-nmap <C-P> :FZF<CR>
 
 " FZF Options
 " exclude file names from Ag search
 command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
+" set C-P as shortcut, and use GFiles, which excludes anything in .gitignore
+silent! nmap <C-P> :GFiles<CR>
 
 " CloseTag Options
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.php,*.js,*.jsx,*.tsx'
