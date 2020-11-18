@@ -7,10 +7,12 @@ Plug 'alvan/vim-closetag' " auto tag close for html
 Plug 'jiangmiao/auto-pairs' " auto bracket/quote close
 Plug 'vim-airline/vim-airline' " bottom bar
 Plug 'vim-airline/vim-airline-themes' " themes for bottom bar
-Plug 'franbach/miramare' " color scheme
-Plug 'arzg/vim-colors-xcode' " color scheme
+Plug 'morhetz/gruvbox' " color scheme
+Plug 'dracula/vim', {'as': 'dracula'} " color scheme
 Plug 'ycm-core/YouCompleteMe' " auto code completion. See repo for full install instructions
-Plug 'jparise/vim-graphql' " graphql syntax highliter
+Plug 'HerringtonDarkholme/yats.vim' " typescrypt syntax highlighter (required for vim-jsx-pretty to work on tsx files)
+Plug 'maxmellon/vim-jsx-pretty' " jsx and tsx syntax highlighter
+Plug 'jparise/vim-graphql' " graphql syntax highlighter
 Plug 'prettier/vim-prettier', { 
   \ 'do': 'yarn install',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
@@ -18,6 +20,10 @@ cal plug#end()
 
 let mapleader = ","
 nmap <C-P> :FZF<CR>
+
+" FZF Options
+" exclude file names from Ag search
+command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
 
 " CloseTag Options
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.php,*.js,*.jsx,*.tsx'
@@ -43,7 +49,7 @@ set smartindent
 
 syntax on " turn on syntax highlighting
 set background=dark
-colorscheme xcodedark " also try xcodewwdc
+colorscheme dracula
 "hi Comment cterm=bold
 "hi Search guifg=black guibg=yellow
 "let g:airline_theme='molokai'
